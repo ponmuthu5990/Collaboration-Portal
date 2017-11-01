@@ -6,7 +6,7 @@ import com.niit.collabback.model.BlogComment;
 
 public interface BlogCommentDAO {
 
-	public List<BlogComment> listByUserId(int blogId);
+	public List<BlogComment> listByBlogId(int blogId);
 
 	public void save(BlogComment blogComment);
 

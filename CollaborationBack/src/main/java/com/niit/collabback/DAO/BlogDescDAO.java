@@ -6,7 +6,7 @@ import com.niit.collabback.model.BlogDescription;
 
 public interface BlogDescDAO {
 
-	public List<BlogDescription> listByUserId(int blogId);
+	public List<BlogDescription> listByBlogId(int blogId);
 
 	public void save(BlogDescription blogDescription);
 

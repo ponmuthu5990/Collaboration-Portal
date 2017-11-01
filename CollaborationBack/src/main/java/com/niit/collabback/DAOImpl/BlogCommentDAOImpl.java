@@ -20,9 +20,9 @@ public class BlogCommentDAOImpl implements BlogCommentDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	public List<BlogComment> listByUserId(int blogId) {
+	public List<BlogComment> listByBlogId(int blogId) {
 		Session session=sessionFactory.getCurrentSession();
-		Query query=session.createQuery("from BlogComment where blog.blogId = '" + blogId + "'");
+		Query query=session.createQuery("from BlogComment where blog.id = '" + blogId + "'");
 		List<BlogComment> blogCommentList=query.list();
 		return blogCommentList;
 	}

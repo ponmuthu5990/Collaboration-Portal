@@ -14,6 +14,17 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.niit.collabback.model.Blog;
+import com.niit.collabback.model.BlogComment;
+import com.niit.collabback.model.BlogDescription;
+import com.niit.collabback.model.BlogLikes;
+import com.niit.collabback.model.Customer;
+import com.niit.collabback.model.FriendList;
+import com.niit.collabback.model.Job;
+import com.niit.collabback.model.JobApplied;
+import com.niit.collabback.model.JobCompany;
+import com.niit.collabback.model.JobDescription;
+
 @Configuration
 @ComponentScan("com.niit.*")
 @EnableTransactionManagement
@@ -50,7 +61,19 @@ public class ApplicationContextConfig {
 		/* logger.debug("Starting of the method getSessionFactory"); */
 		LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
 		sessionBuilder.addProperties(getHibernateProperties());
-
+		sessionBuilder.addAnnotatedClass(Customer.class);
+		
+		sessionBuilder.addAnnotatedClass(Blog.class);
+		sessionBuilder.addAnnotatedClass(BlogComment.class);
+		sessionBuilder.addAnnotatedClass(BlogDescription.class);
+		sessionBuilder.addAnnotatedClass(BlogLikes.class);
+		
+		sessionBuilder.addAnnotatedClass(Job.class);
+		sessionBuilder.addAnnotatedClass(JobApplied.class);
+		sessionBuilder.addAnnotatedClass(JobDescription.class);
+		sessionBuilder.addAnnotatedClass(JobCompany.class);
+		
+		sessionBuilder.addAnnotatedClass(FriendList.class);
 		return sessionBuilder.buildSessionFactory();
 	}
 

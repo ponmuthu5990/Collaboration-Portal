@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.collabback.DAO.BlogDAO;
 import com.niit.collabback.model.Blog;
-import com.niit.collabback.model.User;
+import com.niit.collabback.model.Customer;
 
 
 @Repository
@@ -30,7 +30,7 @@ public class BlogDAOImpl implements BlogDAO {
 
 	public List<Blog> listByUserId(int userId) {
 		Session session=sessionFactory.getCurrentSession();
-		Query query=session.createQuery("from Blog where user.userId = '" + userId + "'");
+		Query query=session.createQuery("from Blog where customer.userId = '" + userId + "'");
 		List<Blog> blogList=query.list();
 		return blogList;
 	}
@@ -49,6 +49,13 @@ public class BlogDAOImpl implements BlogDAO {
 	public void saveOrUpdate(Blog blog) {
 		Session session=sessionFactory.getCurrentSession();
 		session.saveOrUpdate(blog);
+	}
+
+	public Blog getBlog(int blogId) {
+		Session session=sessionFactory.getCurrentSession();
+		Query query=session.createQuery("from Blog where id = '" + blogId + "'");
+		Blog blog = (Blog) query.uniqueResult();
+		return blog;
 	}
 
 }

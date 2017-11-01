@@ -5,7 +5,7 @@ import java.util.List;
 import com.niit.collabback.model.BlogLikes;
 
 public interface BlogLikeDAO {
-	public List<BlogLikes> listByUserId(int blogId);
+	public List<BlogLikes> listByBlogId(int blogId);
 
 	public void save(BlogLikes blogLikes);
 

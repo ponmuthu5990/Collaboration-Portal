@@ -19,9 +19,9 @@ public class BlogLikeDAOImpl implements BlogLikeDAO{
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	public List<BlogLikes> listByUserId(int blogId) {
+	public List<BlogLikes> listByBlogId(int blogId) {
 		Session session=sessionFactory.getCurrentSession();
-		Query query=session.createQuery("from BlogLikes where blog.blogId = '" + blogId + "'");
+		Query query=session.createQuery("from BlogLikes where blog.id = '" + blogId + "'");
 		List<BlogLikes> blogLikesList=query.list();
 		return blogLikesList;
 	}

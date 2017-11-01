@@ -21,9 +21,9 @@ public class BlogDescDAOImpl implements BlogDescDAO {
 	private SessionFactory sessionFactory;
 	
 	
-	public List<BlogDescription> listByUserId(int blogId) {
+	public List<BlogDescription> listByBlogId(int blogId) {
 		Session session=sessionFactory.getCurrentSession();
-		Query query=session.createQuery("from BlogDescription where blog.blogId = '" + blogId + "'");
+		Query query=session.createQuery("from BlogDescription where blog.id = '" + blogId + "'");
 		List<BlogDescription> blogDescList=query.list();
 		return blogDescList;
 	}
