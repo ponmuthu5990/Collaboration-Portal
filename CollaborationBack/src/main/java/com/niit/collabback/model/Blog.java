@@ -23,6 +23,7 @@ public class Blog {
 	private int id;
 
 	private String blogName;
+	
 
 	/*
 	 * @Generated(value = { "" })

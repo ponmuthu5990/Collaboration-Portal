@@ -29,7 +29,7 @@ import com.niit.collabback.model.JobDescription;
 @ComponentScan("com.niit.*")
 @EnableTransactionManagement
 public class ApplicationContextConfig {
-
+    
 	@Autowired
 	@Bean(name = "dataSource")
 	public DataSource getOracleDataSource() {

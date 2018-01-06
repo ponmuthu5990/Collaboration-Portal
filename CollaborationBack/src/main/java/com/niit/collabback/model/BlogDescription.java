@@ -23,6 +23,7 @@ public class BlogDescription {
 	@Column(length = 2500)
 	private String content;
 
+	
 	@ManyToOne
 	@JoinColumn(name = "bid")
 	private Blog blog;

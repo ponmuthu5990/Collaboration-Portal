@@ -27,6 +27,7 @@ public class FriendList {
 
 	private int userId;
 
+	
 	public int getfLId() {
 		return fLId;
 	}

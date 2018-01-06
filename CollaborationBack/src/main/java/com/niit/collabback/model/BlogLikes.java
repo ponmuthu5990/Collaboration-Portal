@@ -21,6 +21,7 @@ public class BlogLikes {
 
 	private String userId;
 
+	
 	@ManyToOne
 	@JoinColumn(name = "bid")
 	private Blog blog;
