@@ -1,0 +1,202 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title></title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-cookies.js"></script>
+<script type="text/javascript" src="app.js"></script>
+<script type="text/javascript" src="Customer/CustomerController.js"></script>
+<script type="text/javascript" src="Customer/CustomerService.js"></script>
+<style>
+
+.bs-dark.navbar-inverse {
+  background-color: #222;
+  border-color: #080808;
+}
+.bs-dark .navbar-img {padding:5px 6px !important;}
+.bs-dark .navbar-img img {width:40px;}
+.bs-dark .dropdown-menu {
+  min-width: 200px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  background-color: #000;
+  border: 1px solid rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(0, 0, 0, .15);
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+          box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+
+.bs-dark .dropdown-menu .divider {
+  border: 1px solid rgba(0, 0, 0, 0.8);
+}
+.bs-dark .dropdown-menu > li > a {
+  padding: 6px 20px;
+  color: rgba(255,255,255,0.80);
+}
+.bs-dark .dropdown-menu > li > a:hover,
+.bs-dark .dropdown-menu > li > a:focus {
+  color: rgba(255,255,255,0.70);
+  text-decoration: none;
+  background-color: transparent;
+}
+.bs-dark .dropdown-menu > .active > a,
+.bs-dark .dropdown-menu > .active > a:hover,
+.bs-dark .dropdown-menu > .active > a:focus {
+  color: rgba(255,255,255,0.70);
+  text-decoration: none;
+  background-color: transparent;
+  outline: 0;
+}
+
+.bs-dark .navbar-form {
+  margin:0;
+  margin-top: 5px;
+  padding:8px 0px;
+}
+ 
+.bs-dark .navbar-form .search-box {
+  border:0px;
+  height:35px;
+  outline: none;
+  width:320px;
+  padding-right: 3px;
+  padding-left: 15px;
+  margin:4px;
+  -webkit-border-radius: 22px;
+  -moz-border-radius: 22px;
+  border-radius: 22px;
+}
+ 
+.bs-dark .navbar-form button {
+  border: 0;
+  background: none;
+  padding: 2px 5px;
+  margin-top: 2px;
+  position: relative;
+  left: -34px;
+  margin-bottom: 0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+ 
+.bs-dark .search-box:focus + button {
+  z-index: 3;   
+}
+
+@media (min-width: 768px) {
+    .bs-dark .dropdown:hover {background-color: #000;}
+	.bs-dark .dropdown:hover .dropdown-menu {
+	  display: block;
+	}
+	.bs-dark .navbar-form {
+	  padding:0px;
+	}	
+	.bs-dark .navbar-form .search-box {
+	  width:260px;
+	  height:32px;
+	}
+
+}
+
+
+
+</style>
+
+</head>
+
+<body ng-app="myApp"  >
+
+    <!------------- Navbar -------------->
+    <nav class="navbar navbar-inverse bs-dark" style="margin-bottom: 0em;"> 
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Logo</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="#!home">Homepage <span class="sr-only">(current)</span></a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Explores <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">News</a></li>
+                <li><a href="#">Sports</a></li>
+                <li><a href="#">Business</a></li>
+                <li><a href="#">Fashion</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Gallery</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Videos</a></li>
+              </ul>
+            </li>
+             <li class=""><a href="#!blog">Blogs </a></li>
+          <li class="" ng-="currentUser.role == 'ADMIN'"><a href="#">Jobs </a></li>
+          
+           <li class="dropdown" ng-show="currentUser.role == 'ADMIN'">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Jobs <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Add New Jobs</a></li>
+                <li><a href="#">View Jobs</a></li>
+              </ul>
+            </li>
+         <!--  <li >
+          <form class="navbar-form navbar-left form-horizontal" role="search">
+              <div class="input-group">
+                 <input type="text" class="search-box" placeholder="Search">
+                 <button type="submit" class="btn"><span class="glyphicon glyphicon-search"></span></button>
+              </div>
+          </form>
+          
+          </li> -->
+          </ul>
+           
+          <ul class="nav navbar-nav navbar-right">
+          <li ng-hide="currentUser.userName" class=""><a href="#!login">SignIn </a></li>
+          <li ng-hide="currentUser.userName" class=""><a href="#!register">SignUp </a></li>
+            <li ng-show="currentUser.userName" class="dropdown" ng-controller="CustomerController">
+              <a href="#" class="dropdown-toggle navbar-img" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              Account 
+              <img src="http://placehold.it/150x150" class="img-circle" alt="Profile Image" />
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#" ng-click="profileDetails(currentUser)">Profile</a></li>
+                <li><a href="#">Inbox</a></li>
+                <li><a href="#">Followers</a></li>
+                <li><a href="#">Settings</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#" ng-click="signOut()">SignOut</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+    </nav>
+    <!----------- !Navbar End ------------>
+
+<div ng-view=""></div>
+
+	<!-- <div class="row" style="text-align:center;">
+		<h2>Bootstrap 3 Inverse Navbar Theme</h2>
+		{{5 + 5}}
+	</div>
+    <section style="text-align:center; margin:10px auto;"><p>Designed by <a href="http://enfoplus.net">Prince J. Sargbah</a></p></section>
+</div>
+ -->
+
+
+
+
+</body>
+
+</html>
