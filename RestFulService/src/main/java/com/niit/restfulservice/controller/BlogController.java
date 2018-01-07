@@ -87,36 +87,38 @@ public class BlogController {
 
 		Blog blog = (Blog) session.getAttribute("blog");
 
-		
-		
 		blog.setBlogComments(null);
 		blog.setBlogDescriptions(null);
 		blog.setBlogLikes(null);
 		blog.setCustomer(null);
-		
+
 		blogComment.setBlog(blog);
-		/*blogComment.getBlog().setBlogComments(null);
-		blogComment.getBlog().setBlogDescriptions(null);
-		blogComment.getBlog().setBlogLikes(null);*/
-		
+		/*
+		 * blogComment.getBlog().setBlogComments(null);
+		 * blogComment.getBlog().setBlogDescriptions(null);
+		 * blogComment.getBlog().setBlogLikes(null);
+		 */
+
 		blogCommentDAO.saveOrUpdate(blogComment);
 		return new ResponseEntity<BlogComment>(blogComment, HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/saveBlogLike", method = RequestMethod.POST)
 	public ResponseEntity<BlogLikes> saveBlogLike(@RequestBody BlogLikes blogLikes, HttpSession session) {
-		
+
 		Blog blog = (Blog) session.getAttribute("blog");
-		
+
 		blog.setBlogComments(null);
 		blog.setBlogDescriptions(null);
 		blog.setBlogLikes(null);
 		blog.setCustomer(null);
-		
+
 		blogLikes.setBlog(blog);
-		/*blogComment.getBlog().setBlogComments(null);
-		blogComment.getBlog().setBlogDescriptions(null);
-		blogComment.getBlog().setBlogLikes(null);*/
+		/*
+		 * blogComment.getBlog().setBlogComments(null);
+		 * blogComment.getBlog().setBlogDescriptions(null);
+		 * blogComment.getBlog().setBlogLikes(null);
+		 */
 		blogLikeDAO.saveOrUpdate(blogLikes);
 		return new ResponseEntity<BlogLikes>(blogLikes, HttpStatus.OK);
 	}

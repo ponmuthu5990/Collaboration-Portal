@@ -82,7 +82,7 @@ public class CustomerController {
 
 			blog.setCustomer(null);
 		}
-
+            
 		customer.setBlogs(blogs);
 
 		return new ResponseEntity<Customer>(customer, HttpStatus.OK);
