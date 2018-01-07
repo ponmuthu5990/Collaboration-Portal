@@ -60,8 +60,7 @@ app.controller('CustomerController',function(CustomerService,$scope,$location,$r
 			}
 
 			
-		}
-		
+		}		
 	}
 	
 	$scope.profileDetails=function(currentUser){
@@ -77,7 +76,6 @@ app.controller('CustomerController',function(CustomerService,$scope,$location,$r
 			$scope.error=response.data
 			
 		})
-	}
-	
+	}	
 	
 })
