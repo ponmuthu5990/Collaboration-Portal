@@ -66,6 +66,8 @@ public class BlogController {
 		return new ResponseEntity<Blog>(blog, HttpStatus.OK);
 
 	}
+	
+	
 
 	@RequestMapping(value = "/saveBlog", method = RequestMethod.POST)
 	public ResponseEntity<Blog> saveBlog(@RequestBody Blog blog) {
@@ -113,6 +115,7 @@ public class BlogController {
 		blog.setBlogLikes(null);
 		blog.setCustomer(null);
 
+		
 		blogLikes.setBlog(blog);
 		/*
 		 * blogComment.getBlog().setBlogComments(null);

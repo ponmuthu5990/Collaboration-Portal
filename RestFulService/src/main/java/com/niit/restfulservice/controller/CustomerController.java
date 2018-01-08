@@ -88,7 +88,6 @@ public class CustomerController {
 		return new ResponseEntity<Customer>(customer, HttpStatus.OK);
 
 		// ONLY FOR AUTHENTICATION
-
 	}
 
 	@RequestMapping(value = "/registerCustomer", method = RequestMethod.POST)
