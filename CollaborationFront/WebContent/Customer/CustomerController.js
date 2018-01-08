@@ -1,5 +1,3 @@
-
-
 app.controller('CustomerController',function(CustomerService,$scope,$location,$rootScope,$cookieStore){
 	console.log("Customer Controller...")
 	
@@ -59,7 +57,6 @@ app.controller('CustomerController',function(CustomerService,$scope,$location,$r
 				$scope.error.message = 'Invalid credentials.. please enter valid password';
 			}
 
-			
 		}		
 	}
 	
