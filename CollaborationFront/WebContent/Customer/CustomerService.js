@@ -1,7 +1,7 @@
 app.factory('CustomerService', function($http) {
 	var customerService = {};
-	var BASE_URL = "http://localhost:7053/RestFulService/"
-
+	var BASE_URL = "http://localhost:7053/RestFulService/";
+	
 	customerService.signUp = function(customer) {
 		console.log("Registration Successfully...")
 		console.log(customer)

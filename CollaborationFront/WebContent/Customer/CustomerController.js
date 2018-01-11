@@ -14,7 +14,6 @@ app.controller('CustomerController',function(CustomerService,$scope,$location,$r
 			$location.path('/signup')
 		})
 	}
-
 	$scope.signIn=function(){
 		$scope.error = {}
 		if($scope.customer.userName != null && $scope.customer.password == null){
@@ -30,8 +29,7 @@ app.controller('CustomerController',function(CustomerService,$scope,$location,$r
 				console.log(response.data)
 				$scope.error=response.data
 				$location.path('/login')
-			})
-			
+			})			
 		}
 		if($scope.customer.userName != null && $scope.customer.password != null){
 			
@@ -58,8 +56,7 @@ app.controller('CustomerController',function(CustomerService,$scope,$location,$r
 			}
 
 		}		
-	}
-	
+	}	
 	$scope.profileDetails=function(currentUser){
 		CustomerService.profileDetails(currentUser).then(function(response) {
 			console.log("profile Details fetched Successfully...")
