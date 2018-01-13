@@ -46,10 +46,13 @@ public class CustomerController {
 
 	@GetMapping("/customer")
 	public ResponseEntity<List<Customer>> getUsers() {
+		
 		List<Customer> customers = customerDAO.list();
+		
 		for (Customer customer : customers) {
 			customer.setBlogs(null);
 		}
+		
 		return new ResponseEntity<List<Customer>>(customers, HttpStatus.OK);
 	}
 
@@ -82,7 +85,7 @@ public class CustomerController {
 
 			blog.setCustomer(null);
 		}
-            
+
 		customer.setBlogs(blogs);
 
 		return new ResponseEntity<Customer>(customer, HttpStatus.OK);
@@ -104,6 +107,7 @@ public class CustomerController {
 	public ResponseEntity<?> loginCustomer(@RequestBody Customer customer, HttpSession session) {
 
 		Customer validcustomer = customerDAO.login(customer);
+		
 		if (validcustomer == null) {
 			Error error = new Error(3, "Invalid credentials.. please enter valid username");
 			return new ResponseEntity<Error>(error, HttpStatus.UNAUTHORIZED);
@@ -120,6 +124,7 @@ public class CustomerController {
 
 		Customer validcustomer = (Customer) session.getAttribute("validcustomer");
 		System.out.println(validcustomer.getPassword() + "==" + customer.getPassword());
+		
 		if (validcustomer.getPassword().equals(customer.getPassword())) {
 			customer.setStatus("TRUE");
 			customer.setBlogs(null);
@@ -144,6 +149,7 @@ public class CustomerController {
 			Error error = new Error(5, "UnAuthorized User");
 			return new ResponseEntity<Error>(error, HttpStatus.UNAUTHORIZED);
 		}
+		
 		String userName = (String) session.getAttribute("userName");
 		System.out.println(userName);
 
