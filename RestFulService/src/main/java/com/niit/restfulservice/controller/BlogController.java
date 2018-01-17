@@ -48,11 +48,11 @@ public class BlogController {
 		blog.setBlogComments(blogComments);
 
 		List<BlogLikes> blogLikes = blogLikeDAO.listByBlogId(blog.getId());
-		
+
 		for (BlogLikes blogLike : blogLikes) {
 			blogLike.setBlog(null);
 		}
-		
+
 		blog.setBlogLikes(blogLikes);
 
 		List<BlogDescription> blogDescriptions = blogDescDAO.listByBlogId(blog.getId());
@@ -72,9 +72,9 @@ public class BlogController {
 	@RequestMapping(value = "/saveBlog", method = RequestMethod.POST)
 	public ResponseEntity<Blog> saveBlog(@RequestBody Blog blog) {
 		blogDAO.saveOrUpdate(blog);
-		
+
 		/* ngModel should be blog.blogComment.comment */
-		
+
 		List<BlogComment> blogComments = blog.getBlogComments();
 
 		if (!blogComments.isEmpty()) {
@@ -116,14 +116,14 @@ public class BlogController {
 		blog.setBlogDescriptions(null);
 		blog.setBlogLikes(null);
 		blog.setCustomer(null);
-		
+
 		blogLikes.setBlog(blog);
 		/*
 		 * blogComment.getBlog().setBlogComments(null);
 		 * blogComment.getBlog().setBlogDescriptions(null);
 		 * blogComment.getBlog().setBlogLikes(null);
 		 */
-		
+
 		blogLikeDAO.saveOrUpdate(blogLikes);
 		return new ResponseEntity<BlogLikes>(blogLikes, HttpStatus.OK);
 	}
