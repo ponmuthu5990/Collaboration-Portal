@@ -16,15 +16,15 @@ import com.niit.collabback.model.FriendList;
 
 @Repository
 @Transactional
-public class FriendListDAOImpl implements FriendListDAO{
+public class FriendListDAOImpl implements FriendListDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-	
+
 	public List<Customer> suggestedCustomer(String username) {
 		Session session = sessionFactory.getCurrentSession();
 		String queryString = "select * from Customer where userName in(select userName from Customer where userName != ? minus (select userId from FriendList where frinedId= ? union select frinedId from FriendList where userId= ?))";
-		
+
 		SQLQuery query = session.createSQLQuery(queryString);
 		query.setString(0, username);
 		query.setString(1, username);
@@ -36,12 +36,12 @@ public class FriendListDAOImpl implements FriendListDAO{
 	}
 
 	public List<FriendList> friendList(String userName) {
-		Session session=sessionFactory.getCurrentSession();
+		Session session = sessionFactory.getCurrentSession();
 		Query query = session.createQuery("from FriendList where (userId=? or frinedId=?) and status = ?");
 		query.setString(0, userName);
 		query.setString(1, userName);
 		query.setCharacter(2, 'A');
-		
+
 		return query.list();
 	}
 

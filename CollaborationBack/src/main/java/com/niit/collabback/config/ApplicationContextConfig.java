@@ -29,7 +29,7 @@ import com.niit.collabback.model.JobDescription;
 @ComponentScan("com.niit.*")
 @EnableTransactionManagement
 public class ApplicationContextConfig {
-    
+
 	@Autowired
 	@Bean(name = "dataSource")
 	public DataSource getOracleDataSource() {
@@ -62,17 +62,17 @@ public class ApplicationContextConfig {
 		LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
 		sessionBuilder.addProperties(getHibernateProperties());
 		sessionBuilder.addAnnotatedClass(Customer.class);
-		
+
 		sessionBuilder.addAnnotatedClass(Blog.class);
 		sessionBuilder.addAnnotatedClass(BlogComment.class);
 		sessionBuilder.addAnnotatedClass(BlogDescription.class);
 		sessionBuilder.addAnnotatedClass(BlogLikes.class);
-		
+
 		sessionBuilder.addAnnotatedClass(Job.class);
 		sessionBuilder.addAnnotatedClass(JobApplied.class);
 		sessionBuilder.addAnnotatedClass(JobDescription.class);
 		sessionBuilder.addAnnotatedClass(JobCompany.class);
-		
+
 		sessionBuilder.addAnnotatedClass(FriendList.class);
 		return sessionBuilder.buildSessionFactory();
 	}
