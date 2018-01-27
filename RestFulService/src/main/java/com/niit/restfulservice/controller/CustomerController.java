@@ -103,6 +103,10 @@ public class CustomerController {
 
 	}
 
+	
+	
+	
+	
 	@RequestMapping(value = "/loginCustomer", method = RequestMethod.POST)
 	public ResponseEntity<?> loginCustomer(@RequestBody Customer customer, HttpSession session) {
 
